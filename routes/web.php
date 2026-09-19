@@ -5,10 +5,12 @@ use App\Http\Controllers\Halocontroller;
 use App\Http\Controllers\belajarcontroller;
 use App\Http\Controllers\day2controller;
 use App\Http\Controllers\perpuscontroller;
+use App\Http\Controllers\BarangController;
 
 Route::get('/', function () {
     return view('hello');
 });
+
 
 Route::get('/halo', [Halocontroller::class, 'index']);
 
@@ -22,4 +24,13 @@ Route::get('/halaman3', [day2controller::class, 'tampilan']);
 Route::get('/selamat', [perpuscontroller::class, 'index']);
 Route::get('/selamat/{cabang}', [perpuscontroller::class, 'getcabang']);
 Route::post('/post', [perpuscontroller::class, 'postcabang'])->name('selamat');
-// Route::post('/post', function() {return 'berhasil';});
+
+Route::post('/barang/add' , [BarangController::class, 'store'])->name('barang.kirim');
+Route::get('/barang/add' , [BarangController::class, 'store_view'])->name('barang.tambah');
+
+
+Route::get('/barang/update/{id}' , [BarangController::class, 'update_view'])->name('barang.edit');
+Route::put('/barang/update/{id}' , [BarangController::class, 'update'])->name('barang.update');
+
+Route::get('/barang/delete/{id}' , [BarangController::class, 'destroy'])->name('barang.delete');
+Route::get('/barang' , [BarangController::class, 'index']);
