@@ -6,6 +6,7 @@ use App\Http\Controllers\belajarcontroller;
 use App\Http\Controllers\day2controller;
 use App\Http\Controllers\perpuscontroller;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\datasiswaController;
 
 Route::get('/', function () {
     return view('hello');
@@ -34,3 +35,13 @@ Route::put('/barang/update/{id}' , [BarangController::class, 'update'])->name('b
 
 Route::get('/barang/delete/{id}' , [BarangController::class, 'destroy'])->name('barang.delete');
 Route::get('/barang' , [BarangController::class, 'index']);
+
+Route::post('/siswa/add' , [datasiswaController::class, 'store'])->name('siswa.kirim');
+Route::get('/siswa/add' , [datasiswaController::class, 'siswa_view'])->name('siswa.tambah');
+
+
+Route::get('/siswa/update/{id}' , [datasiswaController::class, 'update_view'])->name('siswa.edit');
+Route::put('/siswa/update/{id}' , [datasiswaController::class, 'update'])->name('siswa.update');
+
+Route::get('/siswa/delete/{id}' , [datasiswaController::class, 'destroy'])->name('siswa.delete');
+Route::get('/siswa' , [datasiswaController::class, 'index']);
