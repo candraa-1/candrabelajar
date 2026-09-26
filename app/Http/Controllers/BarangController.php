@@ -22,12 +22,13 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        $barang = new Barang();
-        $barang -> nama = $request -> nama;
-        $barang -> harga = $request -> harga;
-        $barang -> stok = $request -> stok;
-        $barang ->save();
+        $validated = $request->validate([
+            'nama' => 'required|string',
+            'harga' => 'required|numeric',
+            'stok' => 'required|integer',
+        ]);
 
+        Barang::create($validated);
         return redirect('/barang');
     }
 
@@ -44,12 +45,14 @@ class BarangController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $barang = Barang::find($id);
-        $barang -> nama = $request -> nama;
-        $barang -> harga = $request -> harga;
-        $barang -> stok = $request -> stok;
-        $barang -> save();
+        $barang = Barang:: find($id);
+       $validated = $request->validate([
+            'nama' => 'required|string',
+            'harga' => 'required|numeric',
+            'stok' => 'required|integer',
+        ]);
 
+        $barang->update($validated);
         return redirect('/barang');
     }
 

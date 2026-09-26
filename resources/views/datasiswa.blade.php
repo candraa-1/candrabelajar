@@ -6,7 +6,8 @@
 
     <title>Data Siswa</title>
 
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
 </head>
 
 <body class="bg-gray-100">
@@ -31,6 +32,9 @@
                     <thead class="bg-gray-50 border-b border-gray-200">
                         <tr>
 
+                            <th class="px-6 py-4 text-left text-sm font-medium text-gray-600">
+                                Id
+                            </th>
                             <th class="px-6 py-4 text-left text-sm font-medium text-gray-600">
                                 Nama
                             </th>
@@ -62,9 +66,15 @@
                     <tbody class="divide-y divide-gray-200">
 
                         @foreach ($siswa as $b)
-
+                        
                         <tr class="hover:bg-gray-50">
-
+                            
+                            @for ($i=0;$i<=5;$i++)
+                            
+                            <td class="px-6 py-4 text-sm text-gray-800">
+                                {{ $i }}
+                            </td>
+                            @endfor
                             <td class="px-6 py-4 text-sm text-gray-800">
                                 {{ $b->nama }}
                             </td>

@@ -7,6 +7,8 @@ use App\Http\Controllers\day2controller;
 use App\Http\Controllers\perpuscontroller;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\datasiswaController;
+use App\Http\Controllers\DataBukuController;
+
 
 Route::get('/', function () {
     return view('hello');
@@ -45,3 +47,12 @@ Route::put('/siswa/update/{id}' , [datasiswaController::class, 'update'])->name(
 
 Route::get('/siswa/delete/{id}' , [datasiswaController::class, 'destroy'])->name('siswa.delete');
 Route::get('/siswa' , [datasiswaController::class, 'index']);
+
+Route::post('/databuku/add' , [DataBukuController::class, 'store'])->name('buku.kirim');
+Route::get('/databuku/add' , [DataBukuController::class, 'buku_view'])->name('buku.tambah');
+
+Route::get('/databuku/update/{id}' , [DataBukuController::class, 'update_view'])->name('buku.edit');
+Route::put('/databuku/update/{id}' , [DataBukuController::class, 'update'])->name('buku.update');
+
+Route::get('/databuku/delete/{id}' , [DataBukuController::class, 'destroy'])->name('buku.delete');
+Route::get('/databuku' , [DataBukuController::class, 'index']);

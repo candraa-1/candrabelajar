@@ -1,3 +1,12 @@
+    @error('stok')
+        <h1>ERROR WOIII</h1>
+        <h1>{{$message}}</h1>
+    @enderror      
+    @error('harga')
+        <h1>ERROR PAK</h1>
+        <h1>{{$message}}</h1>
+    @enderror   
+
 <form action="{{route('barang.kirim')}}" method="POST">
     @csrf
     <input type="text" id="nama" placeholder="isikan nama" name="nama">
